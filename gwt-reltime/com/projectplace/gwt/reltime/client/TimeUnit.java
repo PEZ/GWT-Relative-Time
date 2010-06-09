@@ -63,7 +63,7 @@ public interface TimeUnit {
      * 
      * @return
      */
-    public String getTimeStamp(long quantity);
+    public String getTimeStamp(String prefix, long quantity, String suffix);
 
     /**
      * The current {@link BasicTimeFormat} for this unit of time.

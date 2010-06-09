@@ -73,8 +73,7 @@ public class Second extends AbstractTimeUnit implements TimeUnit {
 	}
 
     @Override
-    public String getTimeStamp(long quantity) {
-        return timeMessages.seconds((int) quantity);
+    public String getTimeStamp(String prefix, long quantity, String suffix) {
+        return timeMessages.seconds(prefix, (int) quantity, suffix);
     }
-
 }

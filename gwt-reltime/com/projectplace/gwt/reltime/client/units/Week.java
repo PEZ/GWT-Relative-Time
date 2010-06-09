@@ -73,8 +73,7 @@ public class Week extends AbstractTimeUnit implements TimeUnit {
 	}
 
     @Override
-    public String getTimeStamp(long quantity) {
-        return timeMessages.weeks((int) quantity);
+    public String getTimeStamp(String prefix, long quantity, String suffix) {
+        return timeMessages.weeks(prefix, (int) quantity, suffix);
     }
-
 }

@@ -73,8 +73,8 @@ public class JustNow extends AbstractTimeUnit implements TimeUnit {
 	}
 
     @Override
-    public String getTimeStamp(long quantity) {
-        return timeMessages.moments((int) quantity);
+    public String getTimeStamp(String prefix, long quantity, String suffix) {
+        return timeMessages.moments(prefix, (int) quantity, suffix);
     }
 
 }

@@ -51,6 +51,6 @@ public abstract class AbstractTimeUnit
 
     abstract protected String getResourceKeyPrefix();
     
-    abstract public String getTimeStamp(long quantity);
+    abstract public String getTimeStamp(String prefix, long quantity, String suffix);
 
 }

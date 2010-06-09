@@ -73,8 +73,8 @@ public class Day extends AbstractTimeUnit implements TimeUnit {
 	}
 
     @Override
-    public String getTimeStamp(long quantity) {
-        return timeMessages.days((int) quantity);
+    public String getTimeStamp(String prefix, long quantity, String suffix) {
+        return timeMessages.days(prefix, (int) quantity, suffix);
     }
 
 }

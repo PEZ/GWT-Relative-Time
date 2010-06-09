@@ -73,8 +73,7 @@ public class Month extends AbstractTimeUnit implements TimeUnit {
 	}
 
     @Override
-    public String getTimeStamp(long quantity) {
-        return timeMessages.months((int) quantity);
+    public String getTimeStamp(String prefix, long quantity, String suffix) {
+        return timeMessages.months(prefix, (int) quantity, suffix);
     }
-
 }

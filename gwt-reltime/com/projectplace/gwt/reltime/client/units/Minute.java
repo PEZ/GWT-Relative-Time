@@ -73,8 +73,7 @@ public class Minute extends AbstractTimeUnit implements TimeUnit {
 	}
 
     @Override
-    public String getTimeStamp(long quantity) {
-        return timeMessages.minutes((int) quantity);
+    public String getTimeStamp(String prefix, long quantity, String suffix) {
+        return timeMessages.minutes(prefix, (int) quantity, suffix);
     }
-
 }

@@ -73,8 +73,7 @@ public class Year extends AbstractTimeUnit implements TimeUnit {
 	}
 
     @Override
-    public String getTimeStamp(long quantity) {
-        return timeMessages.years((int) quantity);
+    public String getTimeStamp(String prefix, long quantity, String suffix) {
+        return timeMessages.years(prefix, (int) quantity, suffix);
     }
-
 }

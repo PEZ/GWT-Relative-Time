@@ -73,8 +73,7 @@ public class Millennium extends AbstractTimeUnit implements TimeUnit {
 	}
 
     @Override
-    public String getTimeStamp(long quantity) {
-        return timeMessages.millennia((int) quantity);
+    public String getTimeStamp(String prefix, long quantity, String suffix) {
+        return timeMessages.millennia(prefix, (int) quantity, suffix);
     }
-
 }

@@ -21,9 +21,6 @@
  */
 package com.projectplace.gwt.reltime.client;
 
-import com.google.gwt.core.client.GWT;
-import com.projectplace.gwt.reltime.client.i18n.TimeMessages;
-
 /**
  * Represents a simple method of formatting a specific {@link Duration} of time
  * 
@@ -42,25 +39,23 @@ public class BasicTimeFormat implements TimeFormat
     private String pastPrefix = "";
     private String pastSuffix = "";
     private int roundingTolerance = 0;
-    private TimeMessages timeMessages = GWT.create(TimeMessages.class);
 
     public String format(final Duration duration)
     {
         String sign = getSign(duration);
-        String unit = getGramaticallyCorrectName(duration);
-
-        return decorate(sign, unit);
+        return getGramaticallyCorrectName(sign, duration);
     }
 
-    private String decorate(final String sign, String result)
+    private String getGramaticallyCorrectName(final String sign, Duration d)
     {
+        String result = null;
         if (NEGATIVE.equals(sign))
         {
-            result = timeMessages.time(pastPrefix, result, pastSuffix);
+            result = d.getUnit().getTimeStamp(pastPrefix, getQuantity(d), pastSuffix);
         }
         else
         {
-            result = timeMessages.time(futurePrefix, result, futureSuffix);
+            result = d.getUnit().getTimeStamp(futurePrefix, getQuantity(d), futureSuffix);
         }
         return result.trim();
     }
@@ -79,11 +74,6 @@ public class BasicTimeFormat implements TimeFormat
             }
         }
         return quantity;
-    }
-
-    private String getGramaticallyCorrectName(final Duration d)
-    {
-        return d.getUnit().getTimeStamp(getQuantity(d));
     }
 
     private String getSign(final Duration d)

@@ -72,8 +72,7 @@ public class Millisecond extends AbstractTimeUnit implements TimeUnit {
 	}
 
     @Override
-    public String getTimeStamp(long quantity) {
-        return timeMessages.milliseconds((int) quantity);
+    public String getTimeStamp(String prefix, long quantity, String suffix) {
+        return timeMessages.milliseconds(prefix, (int) quantity, suffix);
     }
-
 }

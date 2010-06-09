@@ -73,8 +73,8 @@ public class Hour extends AbstractTimeUnit implements TimeUnit {
 	}
 
     @Override
-    public String getTimeStamp(long quantity) {
-        return timeMessages.hours((int) quantity);
+    public String getTimeStamp(String prefix, long quantity, String suffix) {
+        return timeMessages.hours(prefix, (int) quantity, suffix);
     }
 
 }

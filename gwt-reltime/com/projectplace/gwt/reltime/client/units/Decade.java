@@ -73,8 +73,8 @@ public class Decade extends AbstractTimeUnit implements TimeUnit {
 	}
 
     @Override
-    public String getTimeStamp(long quantity) {
-        return timeMessages.decades((int) quantity);
+    public String getTimeStamp(String prefix, long quantity, String suffix) {
+        return timeMessages.decades(prefix, (int) quantity, suffix);
     }
 
 }

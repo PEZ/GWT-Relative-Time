@@ -73,8 +73,7 @@ public class Century extends AbstractTimeUnit implements TimeUnit {
 	}
 
     @Override
-    public String getTimeStamp(long quantity) {
-        return timeMessages.centuries((int) quantity);
+    public String getTimeStamp(String prefix, long quantity, String suffix) {
+        return timeMessages.centuries(prefix, (int) quantity, suffix);
     }
-
 }
