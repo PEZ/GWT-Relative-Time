@@ -10,7 +10,7 @@
 	<style type="text/css">
 		body {
   		margin-top: 1.0em;
-  		background-color: #98f56b;
+  		background-color: #986bf5;
 		  font-family: "Helvetica,Arial,FreeSans";
   		color: #000000;
     }
@@ -30,7 +30,19 @@
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
 	</style>
-	
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16887363-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>	
 </head>
 
 <body>
@@ -39,6 +51,8 @@
   <div id="container">
 
     <div class="download">
+      <a href="http://github.com/downloads/PEZ/GWT-Relative-Time/gwt-reltime.jar">
+        <img border="0" width="90" src="http://github.com/images/modules/download/jar.png"></a>
       <a href="http://github.com/PEZ/GWT-Relative-Time/zipball/master">
         <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
       <a href="http://github.com/PEZ/GWT-Relative-Time/tarball/master">
@@ -55,17 +69,20 @@
     <p>If you need "social", relative time references in your GWT application and can't be bothered with rolling your own, you can try this library. It can can be used for reporting both times in the past and in the future, from milliseconds to centuries. You can think of it as the GWT equivalent to the jQuery "Time Ago" plugin.</p><h2>Dependencies</h2>
 <p>GWT 2</p>
 <h2>Install</h2>
-<p>Add the gwt-reltime.jar file (from the Downloads section) to your GWT project and inherit it in your application's gwt.xml file like so:
+<p>Add the <a href="http://github.com/downloads/PEZ/GWT-Relative-Time/gwt-reltime.jar">gwt-reltime.jar</a> file  to your GWT project and inherit it in your application's gwt.xml file like so:
 
-<inherits name="com.projectplace.gwt.reltime.RelativeTime"/>
+&lt;inherits name="com.projectplace.gwt.reltime.RelativeTime"/&gt;
 
-(Alternatively, check out the source code of the project and add a reference to the project from your GWT application project.)</p>
+(Alternatively, download a zip or tar or check out the source code of the project and add a reference to the project from your GWT application project.)</p>
 <h2>License</h2>
 <p>GNU Lesser General Public License</p>
 <h2>Authors</h2>
-<p>PEZ (pez@pezius.com)<br/><br/>      </p>
+<p>PEZ (pez@pezius.com)
+<br/>
+<br/>      </p>
 <h2>Contact</h2>
-<p>Peter Strömberg (pez@pezius.com)<br/>      </p>
+<p>Peter Strömberg (pez@pezius.com)
+<br/>      </p>
 
 
     <h2>Download</h2>
@@ -85,6 +102,5 @@
 
   </div>
 
-  
 </body>
 </html>
