@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="jar">
+  <property name="product" location="gwt-reltime"/>
+  <property name="dir" location="${product}"/>
+  <property name="jarfile" location="${product}.jar"/>
+  
+  <target name="jar">
+     <delete file="${jarfile}"/>
+     <property name="version.num" value="0.90"/>
+     <buildnumber file="build.num"/>
+     
+     <manifest file="MANIFEST.MF">
+        <attribute name="Built-By" value="${user.name}"/>
+        <attribute name="Implementation-Version" 
+                 value="${version.num}-b${build.number}"/>         
+     </manifest>
+  
+     <jar destfile="${jarfile}"
+          basedir="${dir}"
+          includes="**/*.*"
+          manifest="MANIFEST.MF"
+          />
+  </target>
+</project>
