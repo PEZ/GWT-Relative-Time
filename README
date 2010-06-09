@@ -1,0 +1,8 @@
+This is a (almost) straight port to GWT of PrettyTime - http://ocpsoft.com/prettytime/
+
+It's an Eclipse project, but I don't see why the source as such shouldn't be usable outside Eclipse. If you create 
+
+
+Still lacking translations to any languages outside English. Will add the translations provided by PrettyTime once I've ironed out some of the bugs.
+
+Anyone knows how to compile jar-files for the modules? I'd like to provide those for people who're not interested in developing this GWT module, just use it.
