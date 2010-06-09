@@ -1,8 +1,19 @@
-This is a (almost) straight port to GWT of PrettyTime - http://ocpsoft.com/prettytime/
+If you need "social", relative time references in your GWT application and can't be bothered with rolling your own, you can try this library. It can can be used for reporting both times in the past and in the future, from milliseconds to centuries. You can think of it as the GWT equivalent to the jQuery "Time Ago" plugin.
 
 It's an Eclipse project, but I don't see why the source as such shouldn't be usable outside Eclipse. If you create 
 
+USAGE
+Add the gwt-reltime.jar file (from the Downloads section) to your GWT project and inherit it in your application's gwt.xml file like so:
 
-Still lacking translations to any languages outside English. Will add the translations provided by PrettyTime once I've ironed out some of the bugs.
+<inherits name="com.projectplace.gwt.reltime.RelativeTime"/>
 
-Anyone knows how to compile jar-files for the modules? I'd like to provide those for people who're not interested in developing this GWT module, just use it.
+Then, wherever you have a Date instance to present and want relative time stamps like "2 hours ago" or "a century from now" do something like:
+
+  RelativeTime relativeFormatter = new RelativeTime();
+  String formattedTime = relativeFormatter.format(date);
+
+KNOWN ISSUES
+Still lacking translations to any languages outside English. Will add the translations provided by PrettyTime once I've ironed out some of the bugs. (See Issues, currently the most obvious bug is that singular handling does not work at all.)
+
+ORIGINS
+This is (almost) a straight port to GWT of PrettyTime - http://ocpsoft.com/prettytime/
