@@ -27,84 +27,55 @@ package com.projectplace.gwt.reltime.client;
  * @author lb3
  * @author cobpez (GWT porting)
  */
-public class BasicTimeFormat implements TimeFormat
-{
-    private static final String NEGATIVE = "-";
-    public static final String SIGN = "%s";
-    public static final String QUANTITY = "%n";
-    public static final String UNIT = "%u";
-
+public class BasicTimeFormat implements TimeFormat {
     private String futurePrefix = "";
     private String futureSuffix = "";
     private String pastPrefix = "";
     private String pastSuffix = "";
     private int roundingTolerance = 0;
 
-    public String format(final Duration duration)
-    {
-        String sign = getSign(duration);
-        return getGramaticallyCorrectName(sign, duration);
-    }
-
-    private String getGramaticallyCorrectName(final String sign, Duration d)
-    {
+    public String format(final Duration duration) {
         String result = null;
-        if (NEGATIVE.equals(sign))
-        {
-            result = d.getUnit().getTimeStamp(pastPrefix, getQuantity(d), pastSuffix);
-        }
-        else
-        {
-            result = d.getUnit().getTimeStamp(futurePrefix, getQuantity(d), futureSuffix);
+        if (duration.getQuantity() < 0) {
+            result = duration.getUnit().getTimeStamp(pastPrefix,
+                    getQuantity(duration), pastSuffix);
+        } else {
+            result = duration.getUnit().getTimeStamp(futurePrefix,
+                    getQuantity(duration), futureSuffix);
         }
         return result.trim();
     }
 
-    private long getQuantity(final Duration duration)
-    {
+    private long getQuantity(final Duration duration) {
         long quantity = Math.abs(duration.getQuantity());
 
-        if (duration.getDelta() != 0)
-        {
+        if (duration.getDelta() != 0) {
             double threshold = Math
-                    .abs(((double) duration.getDelta() / (double) duration.getUnit().getMillisPerUnit()) * 100);
-            if (threshold < roundingTolerance)
-            {
+                    .abs(((double) duration.getDelta() / (double) duration
+                            .getUnit().getMillisPerUnit()) * 100);
+            if (threshold < roundingTolerance) {
                 quantity = quantity + 1;
             }
         }
         return quantity;
     }
 
-    private String getSign(final Duration d)
-    {
-        if (d.getQuantity() < 0)
-        {
-            return NEGATIVE;
-        }
-        return "";
-    }
-
-    public BasicTimeFormat setFuturePrefix(final String futurePrefix)
-    {
+    public BasicTimeFormat setFuturePrefix(final String futurePrefix) {
         this.futurePrefix = futurePrefix.trim();
         return this;
     }
 
-    public BasicTimeFormat setFutureSuffix(final String futureSuffix)
-    {
+    public BasicTimeFormat setFutureSuffix(final String futureSuffix) {
         this.futureSuffix = futureSuffix.trim();
         return this;
     }
 
-    public BasicTimeFormat setPastPrefix(final String pastPrefix)
-    {
+    public BasicTimeFormat setPastPrefix(final String pastPrefix) {
         this.pastPrefix = pastPrefix.trim();
         return this;
     }
 
-    public BasicTimeFormat setPastSuffix(final String pastSuffix)
-    {
+    public BasicTimeFormat setPastSuffix(final String pastSuffix) {
         this.pastSuffix = pastSuffix.trim();
         return this;
     }
@@ -116,8 +87,7 @@ public class BasicTimeFormat implements TimeFormat
      * @param roundingTolerance
      * @return
      */
-    public BasicTimeFormat setRoundingTolerance(final int roundingTolerance)
-    {
+    public BasicTimeFormat setRoundingTolerance(final int roundingTolerance) {
         this.roundingTolerance = roundingTolerance;
         return this;
     }
@@ -126,28 +96,23 @@ public class BasicTimeFormat implements TimeFormat
      * Normal getters
      */
 
-    public String getFuturePrefix()
-    {
+    public String getFuturePrefix() {
         return futurePrefix;
     }
 
-    public String getFutureSuffix()
-    {
+    public String getFutureSuffix() {
         return futureSuffix;
     }
 
-    public String getPastPrefix()
-    {
+    public String getPastPrefix() {
         return pastPrefix;
     }
 
-    public String getPastSuffix()
-    {
+    public String getPastSuffix() {
         return pastSuffix;
     }
 
-    public int getRoundingTolerance()
-    {
+    public int getRoundingTolerance() {
         return roundingTolerance;
     }
 }

@@ -31,8 +31,6 @@ public interface TimeMessages extends Messages {
     @PluralText({"one", "one minute"})
     String minutes(String prefix, @PluralCount int count, String suffix);
     
-    @DefaultMessage("{0} {1,number} hours {2}")
-    @PluralText({"one", "an hour"})
     String hours(String prefix, @PluralCount int count, String suffix);
     
     @DefaultMessage("{0} {1,number} days {2}")
