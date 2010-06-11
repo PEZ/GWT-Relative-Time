@@ -22,58 +22,22 @@
 package com.projectplace.gwt.reltime.client.units;
 
 import com.projectplace.gwt.reltime.client.AbstractTimeUnit;
-import com.projectplace.gwt.reltime.client.TimeFormat;
 import com.projectplace.gwt.reltime.client.TimeUnit;
 
 public class Year extends AbstractTimeUnit implements TimeUnit {
 
-	public Year(String locale) {
-		super(locale);
+	public Year() {
+		super();
 		millisPerUnit = 2629743830L * 12L;
 	}
 
-	protected String getResourceKeyPrefix() {
-		return "Year";
-	}
-
-	public long getMillisPerUnit() {
-		return millisPerUnit;
-	}
-
-	public TimeFormat getFormat() {
-		return format;
-	}
-
-	public void setFormat(final TimeFormat format) {
-		this.format = format;
-	}
-
-	public long getMaxQuantity() {
-		return maxQuantity;
-	}
-
-	public void setMaxQuantity(final long maxQuantity) {
-		this.maxQuantity = maxQuantity;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(final String name) {
-		this.name = name;
-	}
-
-	public String getPluralName() {
-		return pluralName;
-	}
-
-	public void setPluralName(final String pluralName) {
-		this.pluralName = pluralName;
-	}
+    @Override
+    public String getTimeStampFuture(long quantity) {
+        return timeMessages.yearsFuture((int) quantity);
+    }
 
     @Override
-    public String getTimeStamp(String prefix, long quantity, String suffix) {
-        return timeMessages.years(prefix, (int) quantity, suffix);
+    public String getTimeStampPast(long quantity) {
+        return timeMessages.yearsPast((int) quantity);
     }
 }

@@ -22,58 +22,22 @@
 package com.projectplace.gwt.reltime.client.units;
 
 import com.projectplace.gwt.reltime.client.AbstractTimeUnit;
-import com.projectplace.gwt.reltime.client.TimeFormat;
 import com.projectplace.gwt.reltime.client.TimeUnit;
 
 public class Minute extends AbstractTimeUnit implements TimeUnit {
 
-	public Minute(String locale) {
-		super(locale);
+	public Minute() {
+        super();
 		millisPerUnit = 1000L * 60L;
 	}
 
-	protected String getResourceKeyPrefix() {
-		return "Minute";
-	}
-
-	public long getMillisPerUnit() {
-		return millisPerUnit;
-	}
-
-	public TimeFormat getFormat() {
-		return format;
-	}
-
-	public void setFormat(final TimeFormat format) {
-		this.format = format;
-	}
-
-	public long getMaxQuantity() {
-		return maxQuantity;
-	}
-
-	public void setMaxQuantity(final long maxQuantity) {
-		this.maxQuantity = maxQuantity;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(final String name) {
-		this.name = name;
-	}
-
-	public String getPluralName() {
-		return pluralName;
-	}
-
-	public void setPluralName(final String pluralName) {
-		this.pluralName = pluralName;
-	}
+    @Override
+    public String getTimeStampFuture(long quantity) {
+        return timeMessages.minutesFuture((int) quantity);
+    }
 
     @Override
-    public String getTimeStamp(String prefix, long quantity, String suffix) {
-        return timeMessages.minutes(prefix, (int) quantity, suffix);
+    public String getTimeStampPast(long quantity) {
+        return timeMessages.minutesPast((int) quantity);
     }
 }

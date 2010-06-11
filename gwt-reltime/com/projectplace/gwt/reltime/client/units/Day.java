@@ -22,59 +22,22 @@
 package com.projectplace.gwt.reltime.client.units;
 
 import com.projectplace.gwt.reltime.client.AbstractTimeUnit;
-import com.projectplace.gwt.reltime.client.TimeFormat;
 import com.projectplace.gwt.reltime.client.TimeUnit;
 
 public class Day extends AbstractTimeUnit implements TimeUnit {
 
-	public Day(String locale) {
-		super(locale);
+	public Day() {
+        super();
 		millisPerUnit = 1000L * 60L * 60L * 24L;
 	}
 
-	protected String getResourceKeyPrefix() {
-		return "Day";
-	}
-
-	public long getMillisPerUnit() {
-		return millisPerUnit;
-	}
-
-	public TimeFormat getFormat() {
-		return format;
-	}
-
-	public void setFormat(final TimeFormat format) {
-		this.format = format;
-	}
-
-	public long getMaxQuantity() {
-		return maxQuantity;
-	}
-
-	public void setMaxQuantity(final long maxQuantity) {
-		this.maxQuantity = maxQuantity;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(final String name) {
-		this.name = name;
-	}
-
-	public String getPluralName() {
-		return pluralName;
-	}
-
-	public void setPluralName(final String pluralName) {
-		this.pluralName = pluralName;
-	}
-
     @Override
-    public String getTimeStamp(String prefix, long quantity, String suffix) {
-        return timeMessages.days(prefix, (int) quantity, suffix);
+    public String getTimeStampFuture(long quantity) {
+        return timeMessages.daysFuture((int) quantity);
     }
 
+    @Override
+    public String getTimeStampPast(long quantity) {
+        return timeMessages.daysPast((int) quantity);
+    }
 }

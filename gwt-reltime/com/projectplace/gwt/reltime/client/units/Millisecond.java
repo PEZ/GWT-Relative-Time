@@ -22,57 +22,21 @@
 package com.projectplace.gwt.reltime.client.units;
 
 import com.projectplace.gwt.reltime.client.AbstractTimeUnit;
-import com.projectplace.gwt.reltime.client.TimeFormat;
 import com.projectplace.gwt.reltime.client.TimeUnit;
 
 public class Millisecond extends AbstractTimeUnit implements TimeUnit {
 
-	public Millisecond(String locale) {
-		super(locale);
-	}
-
-	protected String getResourceKeyPrefix() {
-		return "Millisecond";
-	}
-
-	public long getMillisPerUnit() {
-		return millisPerUnit;
-	}
-
-	public TimeFormat getFormat() {
-		return format;
-	}
-
-	public void setFormat(final TimeFormat format) {
-		this.format = format;
-	}
-
-	public long getMaxQuantity() {
-		return maxQuantity;
-	}
-
-	public void setMaxQuantity(final long maxQuantity) {
-		this.maxQuantity = maxQuantity;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(final String name) {
-		this.name = name;
-	}
-
-	public String getPluralName() {
-		return pluralName;
-	}
-
-	public void setPluralName(final String pluralName) {
-		this.pluralName = pluralName;
+	public Millisecond() {
+		super();
 	}
 
     @Override
-    public String getTimeStamp(String prefix, long quantity, String suffix) {
-        return timeMessages.milliseconds(prefix, (int) quantity, suffix);
+    public String getTimeStampFuture(long quantity) {
+        return timeMessages.millisecondsFuture((int) quantity);
+    }
+
+    @Override
+    public String getTimeStampPast(long quantity) {
+        return timeMessages.millisecondsPast((int) quantity);
     }
 }

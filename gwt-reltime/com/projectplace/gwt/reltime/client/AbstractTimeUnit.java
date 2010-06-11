@@ -26,31 +26,37 @@ import com.projectplace.gwt.reltime.client.i18n.TimeMessages;
 
 public abstract class AbstractTimeUnit
 {
-
-    protected String locale;
     protected TimeFormat format;
-    protected String name;
-    protected String pluralName;
 
-    // Use sensitive defaults
     protected long maxQuantity = 0;
     protected long millisPerUnit = 1;
     protected TimeMessages timeMessages = GWT.create(TimeMessages.class);
 
-    public AbstractTimeUnit(final String locale)
+    public AbstractTimeUnit()
     {
-        this.locale = locale;
-
-        String futurePrefix = timeMessages.futurePrefix();
-        String futureSuffix = timeMessages.futureSuffix();
-        String pastPrefix = timeMessages.pastPrefix();
-        String pastSuffix = timeMessages.pastSuffix();
-        format = new BasicTimeFormat().setFuturePrefix(futurePrefix).setFutureSuffix(futureSuffix)
-                .setPastPrefix(pastPrefix).setPastSuffix(pastSuffix);
+        format = new BasicTimeFormat();
     }
 
-    abstract protected String getResourceKeyPrefix();
-    
-    abstract public String getTimeStamp(String prefix, long quantity, String suffix);
+    public long getMillisPerUnit() {
+        return millisPerUnit;
+    }
 
+    public TimeFormat getFormat() {
+        return format;
+    }
+
+    public void setFormat(final TimeFormat format) {
+        this.format = format;
+    }
+
+    public long getMaxQuantity() {
+        return maxQuantity;
+    }
+
+    public void setMaxQuantity(final long maxQuantity) {
+        this.maxQuantity = maxQuantity;
+    }
+
+    abstract public String getTimeStampPast(long quantity);
+    abstract public String getTimeStampFuture(long quantity);
 }

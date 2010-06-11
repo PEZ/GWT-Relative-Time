@@ -22,58 +22,22 @@
 package com.projectplace.gwt.reltime.client.units;
 
 import com.projectplace.gwt.reltime.client.AbstractTimeUnit;
-import com.projectplace.gwt.reltime.client.TimeFormat;
 import com.projectplace.gwt.reltime.client.TimeUnit;
 
 public class Week extends AbstractTimeUnit implements TimeUnit {
 
-	public Week(String locale) {
-		super(locale);
+	public Week() {
+		super();
 		millisPerUnit = 1000L * 60L * 60L * 24L * 7L;
 	}
 
-	protected String getResourceKeyPrefix() {
-		return "Week";
-	}
-
-	public long getMillisPerUnit() {
-		return millisPerUnit;
-	}
-
-	public TimeFormat getFormat() {
-		return format;
-	}
-
-	public void setFormat(final TimeFormat format) {
-		this.format = format;
-	}
-
-	public long getMaxQuantity() {
-		return maxQuantity;
-	}
-
-	public void setMaxQuantity(final long maxQuantity) {
-		this.maxQuantity = maxQuantity;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(final String name) {
-		this.name = name;
-	}
-
-	public String getPluralName() {
-		return pluralName;
-	}
-
-	public void setPluralName(final String pluralName) {
-		this.pluralName = pluralName;
-	}
+    @Override
+    public String getTimeStampFuture(long quantity) {
+        return timeMessages.weeksFuture((int) quantity);
+    }
 
     @Override
-    public String getTimeStamp(String prefix, long quantity, String suffix) {
-        return timeMessages.weeks(prefix, (int) quantity, suffix);
+    public String getTimeStampPast(long quantity) {
+        return timeMessages.weeksPast((int) quantity);
     }
 }

@@ -25,23 +25,17 @@ package com.projectplace.gwt.reltime.client;
  * Represents a simple method of formatting a specific {@link Duration} of time
  * 
  * @author lb3
- * @author cobpez (GWT porting)
+ * @author cobpez
  */
 public class BasicTimeFormat implements TimeFormat {
-    private String futurePrefix = "";
-    private String futureSuffix = "";
-    private String pastPrefix = "";
-    private String pastSuffix = "";
     private int roundingTolerance = 0;
 
     public String format(final Duration duration) {
         String result = null;
         if (duration.getQuantity() < 0) {
-            result = duration.getUnit().getTimeStamp(pastPrefix,
-                    getQuantity(duration), pastSuffix);
+            result = duration.getUnit().getTimeStampPast(getQuantity(duration));
         } else {
-            result = duration.getUnit().getTimeStamp(futurePrefix,
-                    getQuantity(duration), futureSuffix);
+            result = duration.getUnit().getTimeStampFuture(getQuantity(duration));
         }
         return result.trim();
     }
@@ -60,26 +54,6 @@ public class BasicTimeFormat implements TimeFormat {
         return quantity;
     }
 
-    public BasicTimeFormat setFuturePrefix(final String futurePrefix) {
-        this.futurePrefix = futurePrefix.trim();
-        return this;
-    }
-
-    public BasicTimeFormat setFutureSuffix(final String futureSuffix) {
-        this.futureSuffix = futureSuffix.trim();
-        return this;
-    }
-
-    public BasicTimeFormat setPastPrefix(final String pastPrefix) {
-        this.pastPrefix = pastPrefix.trim();
-        return this;
-    }
-
-    public BasicTimeFormat setPastSuffix(final String pastSuffix) {
-        this.pastSuffix = pastSuffix.trim();
-        return this;
-    }
-
     /**
      * The percentage of the current {@link TimeUnit}.getMillisPerUnit() for
      * which the quantity may be rounded up by one.
@@ -90,26 +64,6 @@ public class BasicTimeFormat implements TimeFormat {
     public BasicTimeFormat setRoundingTolerance(final int roundingTolerance) {
         this.roundingTolerance = roundingTolerance;
         return this;
-    }
-
-    /*
-     * Normal getters
-     */
-
-    public String getFuturePrefix() {
-        return futurePrefix;
-    }
-
-    public String getFutureSuffix() {
-        return futureSuffix;
-    }
-
-    public String getPastPrefix() {
-        return pastPrefix;
-    }
-
-    public String getPastSuffix() {
-        return pastSuffix;
     }
 
     public int getRoundingTolerance() {

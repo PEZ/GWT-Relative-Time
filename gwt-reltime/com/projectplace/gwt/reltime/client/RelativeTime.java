@@ -54,14 +54,13 @@ import com.projectplace.gwt.reltime.client.units.Year;
  * </code>
  * 
  * @author <a href="mailto:lincolnbaxter@gmail.com>Lincoln Baxter, III</a>
- * @author cobpez (GWT porting)
+ * @author cobpez
  */
 public class RelativeTime
 {
 
     private volatile Date reference;
     private volatile List<TimeUnit> timeUnits;
-    private volatile String locale = "en";
 
     /**
      * Default constructor
@@ -86,18 +85,6 @@ public class RelativeTime
         setReference(reference);
     }
 
-    public RelativeTime(final String locale)
-    {
-        this.setLocale(locale);
-        initTimeUnits();
-    }
-
-    public RelativeTime(final Date reference, final String locale)
-    {
-        this(locale);
-        setReference(reference);
-    }
-
     /**
      * Calculate the approximate duration between the referenceDate and date
      * 
@@ -119,18 +106,18 @@ public class RelativeTime
     private void initTimeUnits()
     {
         timeUnits = new ArrayList<TimeUnit>();
-        timeUnits.add(new JustNow(locale));
-        timeUnits.add(new Millisecond(locale));
-        timeUnits.add(new Second(locale));
-        timeUnits.add(new Minute(locale));
-        timeUnits.add(new Hour(locale));
-        timeUnits.add(new Day(locale));
-        timeUnits.add(new Week(locale));
-        timeUnits.add(new Month(locale));
-        timeUnits.add(new Year(locale));
-        timeUnits.add(new Decade(locale));
-        timeUnits.add(new Century(locale));
-        timeUnits.add(new Millennium(locale));
+        timeUnits.add(new JustNow());
+        timeUnits.add(new Millisecond());
+        timeUnits.add(new Second());
+        timeUnits.add(new Minute());
+        timeUnits.add(new Hour());
+        timeUnits.add(new Day());
+        timeUnits.add(new Week());
+        timeUnits.add(new Month());
+        timeUnits.add(new Year());
+        timeUnits.add(new Decade());
+        timeUnits.add(new Century());
+        timeUnits.add(new Millennium());
     }
 
     private Duration calculateDuration(final long difference)
@@ -311,15 +298,4 @@ public class RelativeTime
     {
         this.timeUnits = Arrays.asList(units);
     }
-
-    public String getLocale()
-    {
-        return locale;
-    }
-
-    public void setLocale(final String locale)
-    {
-        this.locale = locale;
-    }
-
 }

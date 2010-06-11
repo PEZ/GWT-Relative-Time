@@ -22,58 +22,22 @@
 package com.projectplace.gwt.reltime.client.units;
 
 import com.projectplace.gwt.reltime.client.AbstractTimeUnit;
-import com.projectplace.gwt.reltime.client.TimeFormat;
 import com.projectplace.gwt.reltime.client.TimeUnit;
 
 public class Century extends AbstractTimeUnit implements TimeUnit {
 
-	public Century(String locale) {
-		super(locale);
+	public Century() {
+        super();
 		millisPerUnit = 3155692597470L;
 	}
 
-	protected String getResourceKeyPrefix() {
-		return "Century";
-	}
-
-	public long getMillisPerUnit() {
-		return millisPerUnit;
-	}
-
-	public TimeFormat getFormat() {
-		return format;
-	}
-
-	public void setFormat(final TimeFormat format) {
-		this.format = format;
-	}
-
-	public long getMaxQuantity() {
-		return maxQuantity;
-	}
-
-	public void setMaxQuantity(final long maxQuantity) {
-		this.maxQuantity = maxQuantity;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(final String name) {
-		this.name = name;
-	}
-
-	public String getPluralName() {
-		return pluralName;
-	}
-
-	public void setPluralName(final String pluralName) {
-		this.pluralName = pluralName;
-	}
+    @Override
+    public String getTimeStampFuture(long quantity) {
+        return timeMessages.centuriesFuture((int) quantity);
+    }
 
     @Override
-    public String getTimeStamp(String prefix, long quantity, String suffix) {
-        return timeMessages.centuries(prefix, (int) quantity, suffix);
+    public String getTimeStampPast(long quantity) {
+        return timeMessages.centuriesPast((int) quantity);
     }
 }

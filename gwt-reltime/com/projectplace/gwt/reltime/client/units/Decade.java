@@ -22,59 +22,22 @@
 package com.projectplace.gwt.reltime.client.units;
 
 import com.projectplace.gwt.reltime.client.AbstractTimeUnit;
-import com.projectplace.gwt.reltime.client.TimeFormat;
 import com.projectplace.gwt.reltime.client.TimeUnit;
 
 public class Decade extends AbstractTimeUnit implements TimeUnit {
 
-	public Decade(String locale) {
-		super(locale);
+	public Decade() {
+        super();
 		millisPerUnit = 315569259747L;
 	}
 
-	protected String getResourceKeyPrefix() {
-		return "Decade";
-	}
-
-	public long getMillisPerUnit() {
-		return millisPerUnit;
-	}
-
-	public TimeFormat getFormat() {
-		return format;
-	}
-
-	public void setFormat(final TimeFormat format) {
-		this.format = format;
-	}
-
-	public long getMaxQuantity() {
-		return maxQuantity;
-	}
-
-	public void setMaxQuantity(final long maxQuantity) {
-		this.maxQuantity = maxQuantity;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(final String name) {
-		this.name = name;
-	}
-
-	public String getPluralName() {
-		return pluralName;
-	}
-
-	public void setPluralName(final String pluralName) {
-		this.pluralName = pluralName;
-	}
-
     @Override
-    public String getTimeStamp(String prefix, long quantity, String suffix) {
-        return timeMessages.decades(prefix, (int) quantity, suffix);
+    public String getTimeStampFuture(long quantity) {
+        return timeMessages.decadesFuture((int) quantity);
     }
 
+    @Override
+    public String getTimeStampPast(long quantity) {
+        return timeMessages.decadesPast((int) quantity);
+    }
 }

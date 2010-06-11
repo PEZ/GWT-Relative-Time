@@ -26,7 +26,7 @@ package com.projectplace.gwt.reltime.client;
  * milliseconds.
  * 
  * @author lb3
- * @author cobpez (GWT porting)
+ * @author cobpez
  */
 public interface TimeUnit {
 
@@ -58,12 +58,20 @@ public interface TimeUnit {
     public long getMaxQuantity();
 
     /**
-     * The grammatically correct time stamp for quantity units of this unit of time. (e.g. "one
-     * second", "two seconds")
+     * The grammatically correct time stamp for quantity units of this unit of time
+     * in the past. (e.g. "a second ago", "two seconds ago")
      * 
      * @return
      */
-    public String getTimeStamp(String prefix, long quantity, String suffix);
+    public String getTimeStampPast(long quantity);
+
+    /**
+     * The grammatically correct time stamp for quantity units of this unit of time
+     * in the future (e.g. "one second from now", "two seconds from now")
+     * 
+     * @return
+     */
+    public String getTimeStampFuture(long quantity);
 
     /**
      * The current {@link BasicTimeFormat} for this unit of time.
@@ -71,5 +79,4 @@ public interface TimeUnit {
      * @return
      */
     public TimeFormat getFormat();
-
 }
