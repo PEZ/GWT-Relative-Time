@@ -10,20 +10,21 @@
 	<style type="text/css">
 		body {
   		margin-top: 1.0em;
-  		background-color: #986bf5;
-		  font-family: "Helvetica,Arial,FreeSans";
+  		background-color: #eee;
+		font-family: "Helvetica,Arial,FreeSans";
   		color: #000000;
     }
     #container {
       margin: 0 auto;
       width: 700px;
     }
-		h1 { font-size: 3.8em; color: #670a94; margin-bottom: 3px; }
+	.code { background: #000; color: #fff; padding: 15px;}
+		h1 { font-size: 3.8em; color: #111; margin-bottom: 3px; }
 		h1 .small { font-size: 0.4em; }
 		h1 a { text-decoration: none }
-		h2 { font-size: 1.5em; color: #670a94; }
-    h3 { text-align: center; color: #670a94; }
-    a { color: #670a94; }
+		h2 { font-size: 1.5em; color: #111; }
+    h3 { text-align: center; color: #111; }
+    a { color: blue; }
     .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
     .download { float: right; }
 		pre { background: #000; color: #fff; padding: 15px;}
@@ -52,7 +53,7 @@
 
     <div class="download">
       <a href="http://github.com/downloads/PEZ/GWT-Relative-Time/gwt-reltime.jar">
-        <img border="0" width="90" src="http://github.com/images/modules/download/jar.png"></a>
+        <img src="jar_icon.png" width="90" border="0"></a>
       <a href="http://github.com/PEZ/GWT-Relative-Time/zipball/master">
         <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
       <a href="http://github.com/PEZ/GWT-Relative-Time/tarball/master">
@@ -71,9 +72,18 @@
 <h2>Install</h2>
 <p>Add the <a href="http://github.com/downloads/PEZ/GWT-Relative-Time/gwt-reltime.jar">gwt-reltime.jar</a> file  to your GWT project and inherit it in your application's gwt.xml file like so:
 
-&lt;inherits name="com.projectplace.gwt.reltime.RelativeTime"/&gt;
+<pre>&lt;inherits name="com.projectplace.gwt.reltime.RelativeTime"/&gt;</pre>
 
-(Alternatively, download a zip or tar or check out the source code of the project and add a reference to the project from your GWT application project.)</p>
+<p>(Alternatively, download a zip or tar or check out the source code of the project and add a reference to the project from your GWT application project.)
+  </p>
+</p>
+<h2>Usage</h2>
+<p>Wherever you have a Date instance to present and want relative time stamps like &quot;2 hours ago&quot; or &quot;a century from now&quot; do something like:</p>
+<pre>
+RelativeTime relativeFormatter = new RelativeTime();
+String formattedTime = relativeFormatter.format(date);
+</pre>
+<p>Where date is a Java Date instance.</p>
 <h2>License</h2>
 <p>GNU Lesser General Public License</p>
 <h2>Authors</h2>
