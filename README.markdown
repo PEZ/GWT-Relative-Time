@@ -1,7 +1,7 @@
 Human readable relative time stamps
 -----------------------------------
 
-If you need "social", relative time references in your GWT application and can't be bothered with rolling your own, you can try this library. It can can be used for reporting both times in the past and in the future, from milliseconds to centuries. You can think of it as the GWT equivalent to the jQuery "Time Ago" plugin.
+If you need "social", relative time references in your GWT application and can't be bothered with rolling your own, you can try this library. It can can be used for reporting both times in the past and in the future, from milliseconds to centuries. You can think of it as the GWT equivalent to the [jQuery "Time Ago" plugin][2].
 
 (It's an Eclipse project, but I don't see why the source as such shouldn't be usable outside Eclipse.)
 
@@ -41,3 +41,4 @@ This started out as port of [PrettyTime (http://ocpsoft.com/prettytime/)][1] to 
 
 
   [1]: http://ocpsoft.com/prettytime/
+  [2]: http://timeago.yarp.com/
