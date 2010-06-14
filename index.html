@@ -72,25 +72,23 @@
 <h2>Install</h2>
 <p>Add `gwt-reltime.jar` (from the <a href="http://github.com/PEZ/GWT-Relative-Time/downloads">downloads section</a> to your GWT project and inherit it in your application's `gwt.xml?` file like so:
 
-      &lt;inherits name="com.projectplace.gwt.reltime.RelativeTime"/&gt;
+<pre>&lt;inherits name="com.projectplace.gwt.reltime.RelativeTime"/&gt;</pre>
 
 <p>(Alternatively, download a zip or tar or check out the source code of the project and add a reference to the project from your GWT application project.)
   </p>
 </p>
-Usage
-=====
-Wherever you have a Date instance to present and want relative time stamps like &quot;2 hours ago&quot; or &quot;a century from now&quot; do something like:</p>
+<h2>Usage</h2>
+<p>Wherever you have a Date instance to present and want relative time stamps like &quot;2 hours ago&quot; or &quot;a century from now&quot; do something like:</p>
 
-      String formattedTime = RelativeTime.getInstance().format(date);
+<pre>String formattedTime = RelativeTime.getInstance().format(date);</pre>
 
-Where `date` is a Java `Date` instance.</p>
+<p>Where `date` is a Java `Date` instance.</p>
 
-You can also let RelativeTime "tend" your widgets as long as they implement the HasText interface. Like so:
+<p>You can also let RelativeTime "tend" your widgets as long as they implement the HasText interface. Like so:</p>
 
+<pre>RelativeTime.getInstance().tendWidget(someWidget, date);</pre>
 
-      RelativeTime.getInstance().tendWidget(someWidget, date);
-
-That will cause the formatting to be re-applied to your widgets text every thirty seconds, so that your page always present freshly formatted relative time stamps.
+<p>That will cause the formatting to be re-applied to your widgets text every thirty seconds, so that your page always present freshly formatted relative time stamps.</p>p>
 
 <h2>License</h2>
 <p>GNU Lesser General Public License</p>
