@@ -66,10 +66,10 @@ public class RelativeHello implements EntryPoint {
             private void convertDate() {
                 errorLabel.setText("");
                 String dateString = dateField.getText();
-                final RelativeTime relativeFormatter = new RelativeTime();
+                final RelativeTime relativeFormatter = RelativeTime.getInstance();
                 try {
                     Date date = dateTimeFormat.parse(dateString);
-                    resultLabel.setText(relativeFormatter.format(date));
+                    relativeFormatter.tendWidget(resultLabel, date);
                 }
                 catch (IllegalArgumentException e) {
                     resultLabel.setText("");

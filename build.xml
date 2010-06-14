@@ -2,12 +2,11 @@
 <project default="jar">
   <property name="product" location="gwt-reltime"/>
   <property name="dir" location="${product}"/>
-  <property name="jarfile" location="${product}.jar"/>
   
   <target name="jar">
-     <delete file="${jarfile}"/>
      <property name="version.num" value="0.90"/>
      <buildnumber file="build.num"/>
+     <property name="jarfile" location="${product}-${version.num}-b${build.number}.jar"/>
      
      <manifest file="MANIFEST.MF">
         <attribute name="Built-By" value="${user.name}"/>
@@ -20,5 +19,8 @@
           includes="**/*.*"
           manifest="MANIFEST.MF"
           />
+  	
+     <delete file="${product}.jar"/>
+  	 <copy file="${jarfile}" tofile="${product}.jar"/>
   </target>
 </project>

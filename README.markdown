@@ -22,10 +22,15 @@ Add the `gwt-reltime.jar` file (from the Downloads section) to your GWT project 
 
 Then, wherever you have a Date instance to present and want relative time stamps like *"2 hours ago"* or *"a century from now"* do something like:
 
-      RelativeTime relativeFormatter = new RelativeTime();
-      String formattedTime = relativeFormatter.format(date);
+      String formattedTime = RelativeTime.getInstance().format(date);
 
 Where `date` is a Java `Date` instance.
+
+You can also let RelativeTime "tend" your widgets as long as they implement the HasText interface. Like so:
+
+      RelativeTime.getInstance().tendWidget(someWidget, date);
+
+That will cause the formatting to be re-applied to your widgets text every thirty seconds, so that your page always present freshly formatted relative time stamps. 
 
 Known issues
 ============
@@ -35,7 +40,7 @@ Some units are large and need more attention. For instance is -2900 years report
 Future
 ======
 
- - I'll try make a widget that encapsulates the time formatting and that also keeps the time stamps updated on the page. (Like Time Ago does.)
+ - I'll try to make the module automatically track DOM elements that has a relativetime attribute.
  - More languages (at least those from the PrettyTime project)
 
 Origins
