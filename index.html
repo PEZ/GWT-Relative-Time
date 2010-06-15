@@ -67,11 +67,9 @@
       Human readable time stamps for use with GWT clients
     </div>
 
-<h2>Human readable relative time stamps</h2> 
- 
 <p>If you need "social", relative time references (like <em>2 hours ago</em> or <em>a century from now</em>) in your GWT application and can't be bothered with rolling your own, you can try this module. It can can be used for reporting both times in the past and in the future, from milliseconds to millenia. It's aims to be the GWT "equivalent" to the <a href="http://timeago.yarp.com/">jQuery "Time Ago" plugin</a>.</p> 
  
-<h1>Language support</h1> 
+<h2>Language support</h2> 
  
 <p>Currently:</p> 
  
@@ -83,7 +81,7 @@
  
 <p>I'll add a few more soon. If you want to contribute, use the TimeMessages_default.properties as a start.</p> 
  
-<h1>Usage</h1> 
+<h2>Usage</h2> 
  
 <p>Add the latest build of <code>gwt-reltime.jar</code> (from the <a href="http://github.com/PEZ/GWT-Relative-Time/downloads">Downloads section</a>) to your GWT project and inherit it in your application's <code>.gwt.xml</code> file like so:</p> 
  
@@ -93,14 +91,14 @@
 <p>Then, you can use RelativeTime to keep widgets in the GWT client updated with time stamps for humans:</p> 
  
 <pre><code>relativeFormatter = new RelativeTime();
-relativeFormatter.tendWidget(someWidget, date);
+relativeFormatter.tend(someWidget, date);
 </code></pre> 
  
 <p>Where <code>someWidget</code> is an object implementing <code>HasText</code> and <code>date</code> is a Java <code>Date</code> instance. The tended widget will get its text updated every minute.</p> 
  
 <p>It's your responsibility to tell RelativeTime to stop updating widgets that are no longer in use:</p> 
  
-<pre><code>RelativeTime.untendWidget(someWidget);
+<pre><code>RelativeTime.untend(someWidget);
 </code></pre> 
  
 <p>Sometimes (like when a new posting  arrives) you want to update all relative time stamps immediately. You do that like so:</p> 
@@ -115,11 +113,11 @@ relativeFormatter.tendWidget(someWidget, date);
 <pre><code>String formattedTime = new RelativeTime().format(date);
 </code></pre> 
  
-<h1>Known issues</h1> 
+<h2>Known issues</h2> 
  
 <p>Some units are large and need more attention. For instance is -2900 years reported as "2 millennia ago".</p> 
  
-<h1>Future</h1> 
+<h2>Future</h2> 
  
 <ul> 
 <li>I'll try to make the module automatically track DOM elements that has a relativetime attribute.</li> 
@@ -127,9 +125,10 @@ relativeFormatter.tendWidget(someWidget, date);
 </ul> 
  
  
-<h1>Origins</h1> 
+<h2>Origins</h2> 
  
 <p>This started out as port of <a href="http://ocpsoft.com/prettytime/">PrettyTime (http://ocpsoft.com/prettytime/)</a> to GWT.</p> 
+
 <h2>License</h2>
 <p>GNU Lesser General Public License</p>
 <h2>Authors</h2>
