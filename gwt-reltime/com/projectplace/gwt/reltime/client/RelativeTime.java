@@ -65,25 +65,28 @@ import com.projectplace.gwt.reltime.client.units.Year;
  * 
  */
 public class RelativeTime {
-    private static RelativeTime INSTANCE = null;
-    private static HashMap<Date, RelativeTime> REFERENCE_INSTANCES;
-    private volatile Date reference = null;
+    private volatile Date reference;
     private volatile List<TimeUnit> timeUnits;
 
-    private Timer timer = new Timer() {
-        public void run() {
-            updateAllTended();
-        }
-    };
+    private static Timer timer;
+    private static final int TIMER_INTERVAL = 60 * 1000;
 
-    private List<Tended> tendedWidgets = new ArrayList<Tended>();
+    private static HashMap<HasText, Tended> tendedWidgets = new HashMap<HasText, Tended>();
 
+    static {
+        timer = new Timer() {
+            public void run() {
+                updateAllTended();
+            }
+        };
+        timer.scheduleRepeating(TIMER_INTERVAL);        
+    }
+    
     /**
-     * Private constructor
+     * Default constructor
      */
-    private RelativeTime() {
+    public RelativeTime() {
         initTimeUnits();
-        timer.scheduleRepeating(30000);
     }
 
     /**
@@ -95,23 +98,9 @@ public class RelativeTime {
      * 
      * @param reference
      */
-    private RelativeTime(final Date reference) {
+    public RelativeTime(final Date reference) {
         this();
         setReference(reference);
-    }
-    
-    public static RelativeTime getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new RelativeTime();
-        }
-        return INSTANCE;
-    }
-
-    public static RelativeTime getInstance(final Date date) {
-        if (!REFERENCE_INSTANCES.containsKey(date)) {
-            REFERENCE_INSTANCES.put(date, new RelativeTime(date));
-        }
-        return REFERENCE_INSTANCES.get(date);
     }
 
     /**
@@ -316,30 +305,31 @@ public class RelativeTime {
      *            The Date to keep formatting
      * @return A track object for use with @link untendWidget();
      */
-    public Object tendWidget(HasText widget, Date date) {
-        Tended tracked = new Tended(widget, date);
-        if (!tendedWidgets.contains(tracked)) {
-            tracked.update();
-            tendedWidgets.add(tracked);
+    public void tend(HasText widget, Date date) {
+        Tended tended = tendedWidgets.get(widget);
+        if (tended == null) {
+            tended = new Tended(widget, date);
+            tendedWidgets.put(widget, tended);
         }
-        return tracked;
+        tended.update();
     }
 
     /**
      * Stop updating a widget's text.
      * 
-     * @param tended
-     *            object to stop tending
+     * @param tended a HasText widget to stop tending
      */
-    public void untendWidget(Tended tended) {
-        if (tendedWidgets.contains(tended)) {
-            tendedWidgets.remove(tended);
+    public static void untend(HasText widget) {
+        if (tendedWidgets.containsKey(widget)) {
+            tendedWidgets.remove(widget);
         }
     }
 
-    private void updateAllTended() {
-        for (Iterator<Tended> iterator = tendedWidgets.iterator(); iterator
-                .hasNext();) {
+    /**
+     * Updates the relative timestamp of all tended widgets.
+     */
+    public static void updateAllTended() {
+        for (Iterator<Tended> iterator = tendedWidgets.values().iterator(); iterator.hasNext();) {
             iterator.next().update();
         }
     }

@@ -24,19 +24,24 @@ public class RelativeHello implements EntryPoint {
      * This is the entry point method.
      */
     public void onModuleLoad() {
-        final Button sendButton = new Button("Try");
+        final Button addButton = new Button("Add");
+        final Button updateButton = new Button("Update all");
         final TextBox dateField = new TextBox();
 
         dateField.setText(dateTimeFormat.format(new Date()));
-        final Label resultLabel = new Label();
         final Label errorLabel = new Label();
         errorLabel.addStyleName("serverResponseLabelError");
 
-        sendButton.addStyleName("tryButton");
-
+        addButton.addStyleName("tryButton");
+        
+        updateButton.addClickHandler(new ClickHandler() { 
+            public void onClick(ClickEvent event) {
+                RelativeTime.updateAllTended();
+            }
+        });
         RootPanel.get("dateFieldContainer").add(dateField);
-        RootPanel.get("tryButtonContainer").add(sendButton);
-        RootPanel.get("resultLabelContainer").add(resultLabel);
+        RootPanel.get("tryButtonContainer").add(addButton);
+        RootPanel.get("tryButtonContainer").add(updateButton);
         RootPanel.get("errorLabelContainer").add(errorLabel);
 
         dateField.setFocus(true);
@@ -48,7 +53,7 @@ public class RelativeHello implements EntryPoint {
              * Fired when the user clicks on the sendButton.
              */
             public void onClick(ClickEvent event) {
-                convertDate();
+                addDate();
             }
 
             /**
@@ -56,20 +61,22 @@ public class RelativeHello implements EntryPoint {
              */
             public void onKeyUp(KeyUpEvent event) {
                 if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-                    convertDate();
+                    addDate();
                 }
             }
 
             /**
              * Convert the date using @link RelativeTime.
              */
-            private void convertDate() {
+            private void addDate() {
                 errorLabel.setText("");
                 String dateString = dateField.getText();
-                final RelativeTime relativeFormatter = RelativeTime.getInstance();
+                final Label resultLabel = new Label();
+                RootPanel.get("resultLabelContainer").insert(resultLabel, 0);
+                final RelativeTime relativeFormatter = new RelativeTime();
                 try {
                     Date date = dateTimeFormat.parse(dateString);
-                    relativeFormatter.tendWidget(resultLabel, date);
+                    relativeFormatter.tend(resultLabel, date);
                 }
                 catch (IllegalArgumentException e) {
                     resultLabel.setText("");
@@ -79,7 +86,7 @@ public class RelativeHello implements EntryPoint {
         }
 
         MyHandler handler = new MyHandler();
-        sendButton.addClickHandler(handler);
+        addButton.addClickHandler(handler);
         dateField.addKeyUpHandler(handler);
     }
 }
