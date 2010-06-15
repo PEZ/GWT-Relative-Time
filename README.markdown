@@ -23,13 +23,13 @@ Add the latest build of `gwt-reltime.jar` (from the [Downloads section][3]) to y
 Then, you can use RelativeTime to keep widgets in the GWT client updated with time stamps for humans:
 
     relativeFormatter = new RelativeTime();
-    relativeFormatter.tendWidget(someWidget, date);
+    relativeFormatter.tend(someWidget, date);
 
 Where `someWidget` is an object implementing `HasText` and `date` is a Java `Date` instance. The tended widget will get its text updated every minute.
 
 It's your responsibility to tell RelativeTime to stop updating widgets that are no longer in use:
 
-    RelativeTime.untendWidget(someWidget);
+    RelativeTime.untend(someWidget);
 
 Sometimes (like when a new posting  arrives) you want to update all relative time stamps immediately. You do that like so:
 
