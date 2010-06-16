@@ -60,14 +60,13 @@
         <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
     </div>
 
-    <h1><a href="http://github.com/PEZ/GWT-Relative-Time">GWT-Relative-Time</a>
-      <span class="small">by <a href="http://github.com/PEZ">PEZ</a></span></h1>
+    <h1><a href="http://github.com/PEZ/GWT-Relative-Time">GWT-Relative-Time</a></h1>
 
     <div class="description">
-      Human readable time stamps for use with GWT clients. A port of <a href="http://ocpsoft.com/prettytime/">PrettyTime</a>.</p>
+      Bringig timestamps for humans to you GWT clients. A port of <a href="http://ocpsoft.com/prettytime/">PrettyTime</a>.</p>
     </div>
 
-<p>If you need "social", relative time references (like <em>2 hours ago</em> or <em>a century from now</em>) in your GWT application and can't be bothered with rolling your own, you can try this module. It can can be used for reporting both times in the past and in the future, from milliseconds to millenia. It's aims to be the GWT "equivalent" to the <a href="http://timeago.yarp.com/">jQuery "Time Ago" plugin</a>.</p> 
+<p>If you need "social", relative time references (like <em>2 hours ago</em> or <em>a century from now</em>) in your GWT application and can't be bothered with rolling your own, you can try this module. It can can be used for reporting both times in the past and in the future, from milliseconds to millenia. It aims to be the GWT "equivalent" to <a href="http://timeago.yarp.com/">the jQuery "Time Ago" plugin</a>.</p> 
  
 <h2>Language support</h2> 
  
@@ -94,7 +93,7 @@
 relativeFormatter.tend(someWidget, date);
 </code></pre> 
  
-<p>Where <code>someWidget</code> is an object implementing <code>HasText</code> and <code>date</code> is a Java <code>Date</code> instance. The tended widget will get its text updated every minute.</p> 
+<p>Where <code>someWidget</code> is an object implementing <code>HasText</code> and <code>date</code> is a Java <code>Date</code> instance. The tended widget will get its text updated every minute. You can use the same formatter instance to format several widgets. It's even recommended. But if you need different formatter settings please go ahead and create new instances.</p> 
  
 <p>It's your responsibility to tell RelativeTime to stop updating widgets that are no longer in use:</p> 
  
@@ -103,12 +102,10 @@ relativeFormatter.tend(someWidget, date);
  
 <p>Sometimes (like when a new posting  arrives) you want to update all relative time stamps immediately. You do that like so:</p> 
  
-<pre><code>RelativeTime.updateAllTended();
+<pre><code>RelativeTime.updateAllTended(); 
 </code></pre> 
  
-<p>That will cause the formatting to be re-applied to your widget's text every thirty seconds, so that your page always present freshly formatted relative time stamps.</p> 
- 
-<p>If you don't need the auto-updating you can simply convert a date to a relative timestamp <code>String</code>. Like so:</p> 
+<p>When you don't need the auto-updating you can simply convert a date to a relative timestamp <code>String</code>. Like so:</p> 
  
 <pre><code>String formattedTime = new RelativeTime().format(date);
 </code></pre> 
@@ -120,14 +117,13 @@ relativeFormatter.tend(someWidget, date);
 <h2>Future</h2> 
  
 <ul> 
-<li>I'll try to make the module automatically track DOM elements that has a relativetime attribute.</li> 
 <li>More languages (at least those from the PrettyTime project)</li> 
 </ul> 
  
  
 <h2>Origins</h2> 
  
-<p>This started out as port of <a href="http://ocpsoft.com/prettytime/">PrettyTime (http://ocpsoft.com/prettytime/)</a> to GWT.</p> 
+<p>This started out as port of <a href="http://ocpsoft.com/prettytime/">PrettyTime (http://ocpsoft.com/prettytime/)</a> to GWT.</p>
 
 <h2>License</h2>
 <p>GNU Lesser General Public License</p>
