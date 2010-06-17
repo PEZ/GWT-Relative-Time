@@ -66,63 +66,68 @@
       Bringig timestamps for humans to you GWT clients. A port of <a href="http://ocpsoft.com/prettytime/">PrettyTime</a>.</p>
     </div>
 
-<p>If you need "social", relative time references (like <em>2 hours ago</em> or <em>a century from now</em>) in your GWT application and can't be bothered with rolling your own, you can try this module. It can can be used for reporting both times in the past and in the future, from milliseconds to millenia. It aims to be the GWT "equivalent" to <a href="http://timeago.yarp.com/">the jQuery "Time Ago" plugin</a>.</p> 
- 
-<h2>Language support</h2> 
- 
-<p>Currently:</p> 
- 
-<ul> 
-<li>English</li> 
-<li>Swedish</li> 
-</ul> 
- 
- 
-<p>I'll add a few more soon. If you want to contribute, use the TimeMessages_default.properties as a start.</p> 
- 
-<h2>Usage</h2> 
- 
-<p>Add the latest build of <code>gwt-reltime.jar</code> (from the <a href="http://github.com/PEZ/GWT-Relative-Time/downloads">Downloads section</a>) to your GWT project and inherit it in your application's <code>.gwt.xml</code> file like so:</p> 
- 
+<p>If you need "social", relative time references (like <em>2 hours ago</em> or <em>a century from now</em>) in your GWT application and can't be bothered with rolling your own, you can try this module. It can can be used for reporting both times in the past and in the future, from milliseconds to millenia. It aims to be the GWT "equivalent" to <a href="http://timeago.yarp.com/">the jQuery "Time Ago" plugin</a>.</p>
+
+<h2>Language support</h2>
+
+<p>Currently:</p>
+
+<ul>
+<li>English</li>
+<li>Swedish (locale <code>sv</code>)</li>
+</ul>
+
+
+<p>I'll add a few more soon. If you want to contribute, use the TimeMessages_default.properties as a start.</p>
+
+<h2>Usage</h2>
+
+<p>Add the latest build of <code>gwt-reltime.jar</code> (from the <a href="http://github.com/PEZ/GWT-Relative-Time/downloads">Downloads section</a>) to your GWT project and inherit it in your application's <code>.gwt.xml</code> file like so:</p>
+
 <pre><code>&lt;inherits name="com.projectplace.gwt.reltime.RelativeTime"/&gt;
-</code></pre> 
- 
-<p>Then, you can use RelativeTime to keep widgets in the GWT client updated with time stamps for humans:</p> 
- 
+</code></pre>
+
+<p>If you want localized messages, say so:</p>
+
+<pre><code>&lt;extend-property name="locale" values="sv"/&gt;
+</code></pre>
+
+<p>With that in place, you can use RelativeTime to keep widgets in the GWT client updated with time stamps for humans:</p>
+
 <pre><code>relativeFormatter = new RelativeTime();
 relativeFormatter.tend(someWidget, date);
-</code></pre> 
- 
-<p>Where <code>someWidget</code> is an object implementing <code>HasText</code> and <code>date</code> is a Java <code>Date</code> instance. The tended widget will get its text updated every minute. You can use the same formatter instance to format several widgets. It's even recommended. But if you need different formatter settings please go ahead and create new instances.</p> 
- 
-<p>It's your responsibility to tell RelativeTime to stop updating widgets that are no longer in use:</p> 
- 
+</code></pre>
+
+<p>Where <code>someWidget</code> is an object implementing <code>HasText</code> and <code>date</code> is a Java <code>Date</code> instance. The tended widget will get its text updated every minute. You can use the same formatter instance to format several widgets. It's even recommended. But if you need different formatter settings please go ahead and create new instances.</p>
+
+<p>It's your responsibility to tell RelativeTime to stop updating widgets that are no longer in use:</p>
+
 <pre><code>RelativeTime.untend(someWidget);
-</code></pre> 
- 
-<p>Sometimes (like when a new posting  arrives) you want to update all relative time stamps immediately. You do that like so:</p> 
- 
+</code></pre>
+
+<p>Sometimes (like when a new posting  arrives) you want to update all relative time stamps immediately. You do that like so:</p>
+
 <pre><code>RelativeTime.updateAllTended(); 
-</code></pre> 
- 
-<p>When you don't need the auto-updating you can simply convert a date to a relative timestamp <code>String</code>. Like so:</p> 
- 
+</code></pre>
+
+<p>When you don't need the auto-updating you can simply convert a date to a relative timestamp <code>String</code>. Like so:</p>
+
 <pre><code>String formattedTime = new RelativeTime().format(date);
-</code></pre> 
- 
-<h2>Known issues</h2> 
- 
-<p>Some units are large and need more attention. For instance is -2900 years reported as "2 millennia ago".</p> 
- 
-<h2>Future</h2> 
- 
-<ul> 
-<li>More languages (at least those from the PrettyTime project)</li> 
-</ul> 
- 
- 
-<h2>Origins</h2> 
- 
+</code></pre>
+
+<h2>Known issues</h2>
+
+<p>Some units are large and need more attention. For instance is -2900 years reported as "2 millennia ago".</p>
+
+<h2>Future</h2>
+
+<ul>
+<li>More languages (at least those from the PrettyTime project)</li>
+</ul>
+
+
+<h2>Origins</h2>
+
 <p>This started out as port of <a href="http://ocpsoft.com/prettytime/">PrettyTime (http://ocpsoft.com/prettytime/)</a> to GWT.</p>
 
 <h2>License</h2>
