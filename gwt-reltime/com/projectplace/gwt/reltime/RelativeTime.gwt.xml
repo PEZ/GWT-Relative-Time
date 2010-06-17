@@ -3,6 +3,4 @@
 <module>
 	<inherits name="com.google.gwt.user.User" />
 	<source path="client"/>
-
-  <extend-property name="locale" values="sv"/>
 </module>

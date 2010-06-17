@@ -9,7 +9,7 @@ Language support
 Currently:
 
  - English
- - Swedish
+ - Swedish (locale `sv`)
 
 I'll add a few more soon. If you want to contribute, use the TimeMessages_default.properties as a start.
 
@@ -20,7 +20,11 @@ Add the latest build of `gwt-reltime.jar` (from the [Downloads section][3]) to y
 
     <inherits name="com.projectplace.gwt.reltime.RelativeTime"/>
 
-Then, you can use RelativeTime to keep widgets in the GWT client updated with time stamps for humans:
+If you want localized messages, say so:
+
+    <extend-property name="locale" values="sv"/>
+
+With that in place, you can use RelativeTime to keep widgets in the GWT client updated with time stamps for humans:
 
     relativeFormatter = new RelativeTime();
     relativeFormatter.tend(someWidget, date);
