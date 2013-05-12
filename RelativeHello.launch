@@ -16,7 +16,7 @@
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="com.google.gwt.eclipse.core.moduleClasspathProvider"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.google.gwt.dev.DevMode"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-remoteUI &quot;${gwt_remote_ui_server_port}:${unique_id}&quot; -startupUrl RelativeHello.html -logLevel INFO -port 8889 -war /Users/cobpez/Documents/workspace/RelativeHello/war com.projectplace.gwt.relhello.RelativeHello com.projectplace.gwt.reltime.RelativeTime"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-codeServerPort 9997 -remoteUI &quot;${gwt_remote_ui_server_port}:${unique_id}&quot; -startupUrl RelativeHello.html -logLevel INFO -port 8889 -war /home/koen/git/GWT-Relative-Time/war com.projectplace.gwt.relhello.RelativeHello com.projectplace.gwt.reltime.RelativeTime"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="RelativeHello"/>
-<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xmx512m -XstartOnFirstThread -d32"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xmx512m -d32"/>
 </launchConfiguration>
