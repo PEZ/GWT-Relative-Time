@@ -10,6 +10,7 @@ Currently:
 
  - English
  - Swedish (locale `sv`)
+ - German (locale `de`)
 
 I'll add a few more soon. If you want to contribute, use the TimeMessages_default.properties as a start.
 
